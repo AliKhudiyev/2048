@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wextra   CMakeFiles/2048.dir/src/main.cpp.o  -o 2048 -lSDL2 
