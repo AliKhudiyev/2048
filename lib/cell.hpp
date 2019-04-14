@@ -3,6 +3,11 @@
 
 #pragma once
 
+#include"vect2d.hpp"
+
+#define MAX_COLUMN  4
+#define MAX_ROW     4
+#define MAX_CELLS   (MAX_COLUMN*MAX_ROW)
 #define CELL_WIDTH  90
 #define CELL_HEIGHT 90
 
@@ -13,6 +18,7 @@ struct Cell{
     index_t index=0;
     number_t number=0;
     SDL_Surface* block=nullptr;
+    static Vect2D vect;
 
     ~Cell(){
         SDL_FreeSurface(block);

@@ -5,34 +5,42 @@ SDL_Surface* Surface::on_load(const char* file_name, const SDL_Surface* surface)
     SDL_Surface* tmp_surface=nullptr;
     SDL_Surface* optimezed_surface=nullptr;
 
-    std::cout<<"on load begins\n";
     // SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
-    if(!(tmp_surface=SDL_LoadBMP(file_name))){
-        // std::cout<<SDL_GetError();
-        return NULL;
-    }
+    if(!(tmp_surface=SDL_LoadBMP(file_name))) return NULL;
 
     // SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, tmp);
-    // surface=SDL_DisplayFormat(tmp);
     optimezed_surface=SDL_ConvertSurface(tmp_surface, surface->format, 0);
-    // SDL_FreeSurface(tmp_surface);
+    SDL_FreeSurface(tmp_surface);
 
-    if(!surface){
-        std::cout<<"the given surface is even NULL!\n";
-    }
-    std::cout<<"optimized surface is ready\n";
-    if(!optimezed_surface){
-        std::cout<<"it's null :(\n";
-        // std::cout<<SDL_GetError();
-    }
-
-    return tmp_surface;
+    return optimezed_surface;
 }
 
-SDL_Surface* Surface::on_draw(SDL_Surface* dest, SDL_Surface* src, int x, int y){
-    SDL_BlitSurface(src, NULL, dest, NULL);
+bool Surface::on_draw(SDL_Surface* dest, SDL_Surface* src, int x, int y){
+    if(!dest || !src) return false;
+    
+    SDL_Rect d_rect;
+    d_rect.x=x;
+    d_rect.y=y;
+
+    SDL_BlitSurface(src, NULL, dest, &d_rect);
+
+    return true;
 }
 
-SDL_Surface* Surface::on_draw(SDL_Surface* dest, SDL_Surface* src, int x, int y, int x1, int y1, int w, int h){
-    ;
+bool Surface::on_draw(SDL_Surface* dest, SDL_Surface* src, int x, int y, int x1, int y1, int w, int h){
+    if(!dest || !src) return false;
+    
+    SDL_Rect s_rect;
+    s_rect.x=x1;
+    s_rect.y=y1;
+    s_rect.w=w;
+    s_rect.h=h;
+
+    SDL_Rect d_rect;
+    d_rect.x=x;
+    d_rect.y=y;
+
+    SDL_BlitSurface(src, &s_rect, dest, &d_rect);
+
+    return true;
 }

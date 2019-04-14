@@ -8,15 +8,10 @@
 #include"surface.hpp"
 #include"texture.hpp"
 
-#define MAX_COLUMN  4
-#define MAX_ROW     4
-#define MAX_CELLS   (MAX_COLUMN*MAX_ROW)
 #define WIDTH       (MAX_COLUMN*CELL_WIDTH)
 #define HEIGHT      (MAX_ROW*CELL_HEIGHT)
 
 class App: public Event{
-    friend class Surface;
-    friend class Texture;
 
     private:
     static App* app;
@@ -26,6 +21,7 @@ class App: public Event{
 
     private:
     App(const std::string& title);
+    void on_update();
     
     public:
     ~App(){}
@@ -38,6 +34,10 @@ class App: public Event{
     void on_render();
     void on_quit();
 
+    void on_right_key_pressed();
+    void on_left_key_pressed();
+    void on_up_key_pressed();
+    void on_down_key_pressed();
     void on_exit();
 
     private:

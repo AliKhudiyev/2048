@@ -19,6 +19,6 @@
 class Surface{
     public:
     static SDL_Surface* on_load(const char* file_name, const SDL_Surface* surface);
-    static SDL_Surface* on_draw(SDL_Surface* dest, SDL_Surface* src, int x, int y);
-    static SDL_Surface* on_draw(SDL_Surface* dest, SDL_Surface* src, int x, int y, int x1, int y1, int w, int h);
+    static bool on_draw(SDL_Surface* dest, SDL_Surface* src, int x=0, int y=0);
+    static bool on_draw(SDL_Surface* dest, SDL_Surface* src, int x, int y, int x1, int y1, int w, int h);
 };
