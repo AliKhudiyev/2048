@@ -3,18 +3,20 @@
 
 #pragma once
 
-#define BACKGROUND  "resource/background.bmp"
-#define N2          "resource/2.bmp"
-#define N4          "resource/4.bmp"
-#define N8          "resource/8.bmp"
-#define N16         "resource/16.bmp"
-#define N32         "resource/32.bmp"
-#define N64         "resource/64.bmp"
-#define N128        "resource/128.bmp"
-#define N256        "resource/256.bmp"
-#define N512        "resource/512.bmp"
-#define N1024       "resource/1024.bmp"
-#define N2048       "resource/2048.bmp"
+#define RESOURCE    "resource/"
+#define EXTN        ".bmp"
+#define BACKGROUND  RESOURCE"background" EXTN
+#define N2          RESOURCE"2" EXTN
+#define N4          RESOURCE"4" EXTN
+#define N8          RESOURCE"8" EXTN
+#define N16         RESOURCE"16" EXTN
+#define N32         RESOURCE"32" EXTN
+#define N64         RESOURCE"64" EXTN
+#define N128        RESOURCE"128" EXTN
+#define N256        RESOURCE"256" EXTN
+#define N512        RESOURCE"512" EXTN
+#define N1024       RESOURCE"1024" EXTN
+#define N2048       RESOURCE"2048" EXTN
 
 class Surface{
     public:

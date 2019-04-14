@@ -3,8 +3,8 @@
 #include<iostream>
 
 bool is_out(int x, int y){
-    if(x<0 || x>MAX_COLUMN ||
-       y<0 || y>MAX_ROW) return true;
+    if(x<0 || x>=MAX_COLUMN ||
+       y<0 || y>=MAX_ROW) return true;
     return false;
 }
 
@@ -26,9 +26,16 @@ bool set_index(int x, int y, Cell& cell, Cell cells[]){
     if(is_out(x, y) || !cell.number) return false;
     if(cell.number!=cells[MAX_COLUMN*y+x].number &&
        cells[MAX_COLUMN*y+x].number) return false;
-    
-    cells[MAX_COLUMN*y+x].index=MAX_COLUMN*y+x;
-    cells[MAX_COLUMN*y+x].number*=2;
+    if(cells[MAX_COLUMN*y+x].number==cell.number){
+        std::cout<<"Same numbers added\n";
+        cells[MAX_COLUMN*y+x].number*=2;
+    } else{
+        std::cout<<"Just moved on\n";
+        cells[MAX_COLUMN*y+x].number=cell.number;
+    }
+    cell.number=0;
+    // delete cell.block;
+
     return true;
 }
 
@@ -81,8 +88,9 @@ bool slide(const Vect2D& vect, Cell cells[]){
                 }
             }
         }
+        // break;
     }
-    return result;
+    return true;
 }
 
 bool delete_number(unsigned x, unsigned y, Cell cells[]){

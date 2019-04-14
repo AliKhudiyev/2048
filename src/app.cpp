@@ -22,8 +22,8 @@ App::App(const std::string& title){
 void App::on_update(){
     std::string name;
     for(unsigned i=0;i<MAX_CELLS;++i){
-        if(cells[i].number && !cells[i].block){
-            name="resource/"+std::to_string(cells[i].number)+".bmp";
+        if(cells[i].number){
+            name=RESOURCE+std::to_string(cells[i].number)+EXTN;
             cells[i].block=Surface::on_load(name.c_str(), surface);
             if(!cells[i].block){
                 std::cout<<"failed to load bmp "<<name<<"\n";
@@ -66,6 +66,8 @@ int App::on_init(){
     if(!(surface=SDL_GetWindowSurface(window))) return 1;
     // if(!(renderer=SDL_CreateRenderer(window, -1, renderer_flags))) return 1;
     if(!(background=Surface::on_load(BACKGROUND, surface))) return 1;
+    // generate_cell(Cell::vect, cells);
+    // generate_cell(Cell::vect, cells);
     return 0;
 }
 
@@ -75,19 +77,21 @@ void App::on_event(SDL_Event* event){
 
 void App::on_execute(){
     if(Cell::vect.x_ || Cell::vect.y_){
+        std::cout<<"VECT : "<<Cell::vect.x_<<' '<<Cell::vect.y_<<'\n';
         if(found_2048(cells)){
             std::cout<<"You won!\n";
+            running=false;
+        }
+        else if(!slide(Cell::vect, cells)){
+            std::cout<<"SLIDE: You lost!\n";
             running=false;
         }
         else if(!generate_cell(Cell::vect, cells)){
             std::cout<<"GEN: You lost!\n";
             running=false;
         }
-        // else if(!slide(Cell::vect, cells)){
-        //     std::cout<<"SLIDE: You lost!\n";
-        //     running=false;
-        // }
         Cell::vect=Vect2D(0, 0);
+        std::cout<<std::endl;
     }
     on_update();
 }
@@ -101,10 +105,11 @@ void App::on_render(){
         std::cout<<"Couldn't draw the image!\n";
     }
     for(unsigned i=0;i<MAX_CELLS;++i){
-        if(cells[i].block){
-            if(!Surface::on_draw(surface, cells[i].block, I2X(cells[i].index, 3), I2Y(cells[i].index, 3))){
+        if(cells[i].number && cells[i].block){
+            if(!Surface::on_draw(surface, cells[i].block, I2X(i, 3), I2Y(i, 3))){
                 std::cout<<"Couldn't draw the image!\n";
             }
+            SDL_FreeSurface(cells[i].block);
         }
     }
     SDL_UpdateWindowSurface(window);
@@ -130,12 +135,12 @@ void App::on_left_key_pressed(){
 
 void App::on_up_key_pressed(){
     std::cout<<"up key pressed\n";
-    Cell::vect=Vect2D(0, 1);
+    Cell::vect=Vect2D(0, -1);
 }
 
 void App::on_down_key_pressed(){
     std::cout<<"down key pressed\n";
-    Cell::vect=Vect2D(0, -1);
+    Cell::vect=Vect2D(0, 1);
 }
 
 void App::on_exit(){
