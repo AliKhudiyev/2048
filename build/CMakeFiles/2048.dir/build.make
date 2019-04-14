@@ -81,17 +81,121 @@ CMakeFiles/2048.dir/src/main.cpp.o.provides: CMakeFiles/2048.dir/src/main.cpp.o.
 CMakeFiles/2048.dir/src/main.cpp.o.provides.build: CMakeFiles/2048.dir/src/main.cpp.o
 
 
+CMakeFiles/2048.dir/src/app.cpp.o: CMakeFiles/2048.dir/flags.make
+CMakeFiles/2048.dir/src/app.cpp.o: ../src/app.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ali/Desktop/2048/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/2048.dir/src/app.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/2048.dir/src/app.cpp.o -c /home/ali/Desktop/2048/src/app.cpp
+
+CMakeFiles/2048.dir/src/app.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2048.dir/src/app.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ali/Desktop/2048/src/app.cpp > CMakeFiles/2048.dir/src/app.cpp.i
+
+CMakeFiles/2048.dir/src/app.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2048.dir/src/app.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ali/Desktop/2048/src/app.cpp -o CMakeFiles/2048.dir/src/app.cpp.s
+
+CMakeFiles/2048.dir/src/app.cpp.o.requires:
+
+.PHONY : CMakeFiles/2048.dir/src/app.cpp.o.requires
+
+CMakeFiles/2048.dir/src/app.cpp.o.provides: CMakeFiles/2048.dir/src/app.cpp.o.requires
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/app.cpp.o.provides.build
+.PHONY : CMakeFiles/2048.dir/src/app.cpp.o.provides
+
+CMakeFiles/2048.dir/src/app.cpp.o.provides.build: CMakeFiles/2048.dir/src/app.cpp.o
+
+
+CMakeFiles/2048.dir/src/event.cpp.o: CMakeFiles/2048.dir/flags.make
+CMakeFiles/2048.dir/src/event.cpp.o: ../src/event.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ali/Desktop/2048/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/2048.dir/src/event.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/2048.dir/src/event.cpp.o -c /home/ali/Desktop/2048/src/event.cpp
+
+CMakeFiles/2048.dir/src/event.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2048.dir/src/event.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ali/Desktop/2048/src/event.cpp > CMakeFiles/2048.dir/src/event.cpp.i
+
+CMakeFiles/2048.dir/src/event.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2048.dir/src/event.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ali/Desktop/2048/src/event.cpp -o CMakeFiles/2048.dir/src/event.cpp.s
+
+CMakeFiles/2048.dir/src/event.cpp.o.requires:
+
+.PHONY : CMakeFiles/2048.dir/src/event.cpp.o.requires
+
+CMakeFiles/2048.dir/src/event.cpp.o.provides: CMakeFiles/2048.dir/src/event.cpp.o.requires
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/event.cpp.o.provides.build
+.PHONY : CMakeFiles/2048.dir/src/event.cpp.o.provides
+
+CMakeFiles/2048.dir/src/event.cpp.o.provides.build: CMakeFiles/2048.dir/src/event.cpp.o
+
+
+CMakeFiles/2048.dir/src/surface.cpp.o: CMakeFiles/2048.dir/flags.make
+CMakeFiles/2048.dir/src/surface.cpp.o: ../src/surface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ali/Desktop/2048/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/2048.dir/src/surface.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/2048.dir/src/surface.cpp.o -c /home/ali/Desktop/2048/src/surface.cpp
+
+CMakeFiles/2048.dir/src/surface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2048.dir/src/surface.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ali/Desktop/2048/src/surface.cpp > CMakeFiles/2048.dir/src/surface.cpp.i
+
+CMakeFiles/2048.dir/src/surface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2048.dir/src/surface.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ali/Desktop/2048/src/surface.cpp -o CMakeFiles/2048.dir/src/surface.cpp.s
+
+CMakeFiles/2048.dir/src/surface.cpp.o.requires:
+
+.PHONY : CMakeFiles/2048.dir/src/surface.cpp.o.requires
+
+CMakeFiles/2048.dir/src/surface.cpp.o.provides: CMakeFiles/2048.dir/src/surface.cpp.o.requires
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/surface.cpp.o.provides.build
+.PHONY : CMakeFiles/2048.dir/src/surface.cpp.o.provides
+
+CMakeFiles/2048.dir/src/surface.cpp.o.provides.build: CMakeFiles/2048.dir/src/surface.cpp.o
+
+
+CMakeFiles/2048.dir/src/texture.cpp.o: CMakeFiles/2048.dir/flags.make
+CMakeFiles/2048.dir/src/texture.cpp.o: ../src/texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ali/Desktop/2048/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/2048.dir/src/texture.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/2048.dir/src/texture.cpp.o -c /home/ali/Desktop/2048/src/texture.cpp
+
+CMakeFiles/2048.dir/src/texture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/2048.dir/src/texture.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ali/Desktop/2048/src/texture.cpp > CMakeFiles/2048.dir/src/texture.cpp.i
+
+CMakeFiles/2048.dir/src/texture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/2048.dir/src/texture.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ali/Desktop/2048/src/texture.cpp -o CMakeFiles/2048.dir/src/texture.cpp.s
+
+CMakeFiles/2048.dir/src/texture.cpp.o.requires:
+
+.PHONY : CMakeFiles/2048.dir/src/texture.cpp.o.requires
+
+CMakeFiles/2048.dir/src/texture.cpp.o.provides: CMakeFiles/2048.dir/src/texture.cpp.o.requires
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/texture.cpp.o.provides.build
+.PHONY : CMakeFiles/2048.dir/src/texture.cpp.o.provides
+
+CMakeFiles/2048.dir/src/texture.cpp.o.provides.build: CMakeFiles/2048.dir/src/texture.cpp.o
+
+
 # Object files for target 2048
 2048_OBJECTS = \
-"CMakeFiles/2048.dir/src/main.cpp.o"
+"CMakeFiles/2048.dir/src/main.cpp.o" \
+"CMakeFiles/2048.dir/src/app.cpp.o" \
+"CMakeFiles/2048.dir/src/event.cpp.o" \
+"CMakeFiles/2048.dir/src/surface.cpp.o" \
+"CMakeFiles/2048.dir/src/texture.cpp.o"
 
 # External object files for target 2048
 2048_EXTERNAL_OBJECTS =
 
 2048: CMakeFiles/2048.dir/src/main.cpp.o
+2048: CMakeFiles/2048.dir/src/app.cpp.o
+2048: CMakeFiles/2048.dir/src/event.cpp.o
+2048: CMakeFiles/2048.dir/src/surface.cpp.o
+2048: CMakeFiles/2048.dir/src/texture.cpp.o
 2048: CMakeFiles/2048.dir/build.make
 2048: CMakeFiles/2048.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ali/Desktop/2048/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable 2048"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ali/Desktop/2048/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable 2048"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/2048.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,6 +204,10 @@ CMakeFiles/2048.dir/build: 2048
 .PHONY : CMakeFiles/2048.dir/build
 
 CMakeFiles/2048.dir/requires: CMakeFiles/2048.dir/src/main.cpp.o.requires
+CMakeFiles/2048.dir/requires: CMakeFiles/2048.dir/src/app.cpp.o.requires
+CMakeFiles/2048.dir/requires: CMakeFiles/2048.dir/src/event.cpp.o.requires
+CMakeFiles/2048.dir/requires: CMakeFiles/2048.dir/src/surface.cpp.o.requires
+CMakeFiles/2048.dir/requires: CMakeFiles/2048.dir/src/texture.cpp.o.requires
 
 .PHONY : CMakeFiles/2048.dir/requires
 

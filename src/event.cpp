@@ -3,25 +3,41 @@
 void Event::on_event(SDL_Event* event){
     switch(event->type){
         case SDL_KEYDOWN:{
-            on_key_down(event->key.state, event->key.keysym);
+            switch(event->key.keysym.sym){
+                case SDLK_UP:{
+                    on_up_key_pressed();
+                    break;
+                }
+                case SDLK_DOWN:{
+                    on_down_key_pressed();
+                    break;
+                }
+                case SDLK_RIGHT:{
+                    on_right_key_pressed();
+                    break;
+                }
+                case SDLK_LEFT:{
+                    on_left_key_pressed();
+                    break;
+                }
+                default: break;
+            }
             break;
         }
-        case SDL_KEYUP:{
-            on_key_up(event->key.state, event->key.keysym);
+        case SDL_QUIT:{
+            on_exit();
             break;
         }
         default: break;
     }
 }
 
-void Event::on_key_down(Uint8 state, SDL_Keysym keysym){
-    ;
-}
+void Event::on_right_key_pressed(){}
 
-void Event::on_key_up(Uint8 state, SDL_Keysym keysym){
-    ;
-}
+void Event::on_left_key_pressed(){}
 
-void Event::on_exit(){
+void Event::on_up_key_pressed(){}
 
-}
+void Event::on_down_key_pressed(){}
+
+void Event::on_exit(){}

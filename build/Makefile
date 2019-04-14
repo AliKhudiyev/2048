@@ -123,6 +123,60 @@ depend:
 	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/build
 .PHONY : 2048/fast
 
+src/app.o: src/app.cpp.o
+
+.PHONY : src/app.o
+
+# target to build an object file
+src/app.cpp.o:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/app.cpp.o
+.PHONY : src/app.cpp.o
+
+src/app.i: src/app.cpp.i
+
+.PHONY : src/app.i
+
+# target to preprocess a source file
+src/app.cpp.i:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/app.cpp.i
+.PHONY : src/app.cpp.i
+
+src/app.s: src/app.cpp.s
+
+.PHONY : src/app.s
+
+# target to generate assembly for a file
+src/app.cpp.s:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/app.cpp.s
+.PHONY : src/app.cpp.s
+
+src/event.o: src/event.cpp.o
+
+.PHONY : src/event.o
+
+# target to build an object file
+src/event.cpp.o:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/event.cpp.o
+.PHONY : src/event.cpp.o
+
+src/event.i: src/event.cpp.i
+
+.PHONY : src/event.i
+
+# target to preprocess a source file
+src/event.cpp.i:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/event.cpp.i
+.PHONY : src/event.cpp.i
+
+src/event.s: src/event.cpp.s
+
+.PHONY : src/event.s
+
+# target to generate assembly for a file
+src/event.cpp.s:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/event.cpp.s
+.PHONY : src/event.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -150,6 +204,60 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/surface.o: src/surface.cpp.o
+
+.PHONY : src/surface.o
+
+# target to build an object file
+src/surface.cpp.o:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/surface.cpp.o
+.PHONY : src/surface.cpp.o
+
+src/surface.i: src/surface.cpp.i
+
+.PHONY : src/surface.i
+
+# target to preprocess a source file
+src/surface.cpp.i:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/surface.cpp.i
+.PHONY : src/surface.cpp.i
+
+src/surface.s: src/surface.cpp.s
+
+.PHONY : src/surface.s
+
+# target to generate assembly for a file
+src/surface.cpp.s:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/surface.cpp.s
+.PHONY : src/surface.cpp.s
+
+src/texture.o: src/texture.cpp.o
+
+.PHONY : src/texture.o
+
+# target to build an object file
+src/texture.cpp.o:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/texture.cpp.o
+.PHONY : src/texture.cpp.o
+
+src/texture.i: src/texture.cpp.i
+
+.PHONY : src/texture.i
+
+# target to preprocess a source file
+src/texture.cpp.i:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/texture.cpp.i
+.PHONY : src/texture.cpp.i
+
+src/texture.s: src/texture.cpp.s
+
+.PHONY : src/texture.s
+
+# target to generate assembly for a file
+src/texture.cpp.s:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/texture.cpp.s
+.PHONY : src/texture.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +267,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... 2048"
 	@echo "... edit_cache"
+	@echo "... src/app.o"
+	@echo "... src/app.i"
+	@echo "... src/app.s"
+	@echo "... src/event.o"
+	@echo "... src/event.i"
+	@echo "... src/event.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/surface.o"
+	@echo "... src/surface.i"
+	@echo "... src/surface.s"
+	@echo "... src/texture.o"
+	@echo "... src/texture.i"
+	@echo "... src/texture.s"
 .PHONY : help
 
 

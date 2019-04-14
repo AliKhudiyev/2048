@@ -5,12 +5,14 @@
 
 class Event{
     public:
-    Event();
-    virtual ~Event();
+    Event(){}
+    virtual ~Event(){}
 
     protected:
     virtual void on_event(SDL_Event* event);
-    virtual void on_key_down(Uint8 state, SDL_Keysym keysym);
-    virtual void on_key_up(Uint8 state, SDL_Keysym keysym);
+    virtual void on_right_key_pressed();
+    virtual void on_left_key_pressed();
+    virtual void on_up_key_pressed();
+    virtual void on_down_key_pressed();
     virtual void on_exit();
 };
