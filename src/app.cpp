@@ -66,8 +66,6 @@ int App::on_init(){
     if(!(surface=SDL_GetWindowSurface(window))) return 1;
     // if(!(renderer=SDL_CreateRenderer(window, -1, renderer_flags))) return 1;
     if(!(background=Surface::on_load(BACKGROUND, surface))) return 1;
-    // generate_cell(Cell::vect, cells);
-    // generate_cell(Cell::vect, cells);
     return 0;
 }
 
@@ -125,7 +123,7 @@ void App::on_quit(){
 
 void App::on_right_key_pressed(){
     std::cout<<"right key pressed\n";
-    Cell::vect=Vect2D(1, 0);
+    Cell::vect=Vect2D(1, 0, -1);
 }
 
 void App::on_left_key_pressed(){
@@ -140,7 +138,7 @@ void App::on_up_key_pressed(){
 
 void App::on_down_key_pressed(){
     std::cout<<"down key pressed\n";
-    Cell::vect=Vect2D(0, 1);
+    Cell::vect=Vect2D(0, 1, -1);
 }
 
 void App::on_exit(){

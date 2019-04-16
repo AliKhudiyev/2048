@@ -81,14 +81,19 @@ bool slide(const Vect2D& vect, Cell cells[]){
         std::cout<<"\tsliding..\n";
         for(int i=0;i<MAX_ROW;++i){
             for(int j=0;j<MAX_COLUMN;++j){
-                std::cout<<"cell ("<<j<<", "<<i<<")\n";
-                if(set_index(j+vect.x_, i+vect.y_, cells[MAX_COLUMN*i+j], cells)){
+                // std::cout<<"cell ("<<j<<", "<<i<<")\n";
+                if(vect.k_==1 && set_index(j+vect.x_, i+vect.y_, cells[MAX_COLUMN*i+j], cells)){
                     result=slidable=true;
-                    std::cout<<"slide result is true!\n";
+                    std::cout<<"cell ("<<j<<", "<<i<<")\n";
+                    // std::cout<<"slide result is true!\n";
+                }
+                else if(vect.k_==-1 && set_index(MAX_ROW-1-j+vect.x_, MAX_COLUMN-1-i+vect.y_, cells[MAX_CELLS-1-MAX_COLUMN*i-j], cells)){
+                    result=slidable=true;
+                    std::cout<<"cell ("<<MAX_ROW-1-j<<", "<<MAX_COLUMN-1-i<<")\n";
+                    // std::cout<<"slide result is true!\n";
                 }
             }
         }
-        // break;
     }
     return true;
 }
