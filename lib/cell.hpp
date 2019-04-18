@@ -19,8 +19,4 @@ struct Cell{
     number_t number=0;
     SDL_Surface* block=nullptr;
     static Vect2D vect;
-
-    ~Cell(){
-        SDL_FreeSurface(block);
-    }
 };

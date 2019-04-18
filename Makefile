@@ -1,6 +1,6 @@
 
 GCC		= g++
-FLAGS	= --std=c++17 -Wextra
+FLAGS	= --std=c++17 -Wextra -g
 LINK	= $(shell pkg-config --cflags --libs sdl2)
 
 SRC		= $(wildcard src/*.cpp)

@@ -24,6 +24,7 @@ void App::on_update(){
     for(unsigned i=0;i<MAX_CELLS;++i){
         if(cells[i].number){
             name=RESOURCE+std::to_string(cells[i].number)+EXTN;
+            cells[i].block=nullptr;
             cells[i].block=Surface::on_load(name.c_str(), surface);
             if(!cells[i].block){
                 std::cout<<"failed to load bmp "<<name<<"\n";
@@ -33,7 +34,10 @@ void App::on_update(){
 }
 
 App* App::Get_Instance(const std::string& title){
-    if(!app) app=new App(title);
+    if(!app){
+        std::cout<<"allocating app\n";
+        app=new App(title);
+    }
     return app;
 }
 
@@ -42,11 +46,16 @@ int App::on_run(){
 
     std::cout<<"Init passed.\n";
 
+    // cells[0].number=8;
+    // cells[1].number=4;
+    // cells[2].number=4;
+
     SDL_Event event;
     while(running){
         while(SDL_PollEvent(&event)) on_event(&event);
         on_execute();
         on_render();
+        SDL_Delay(100);
     }
 
     std::cout<<"App working passed\n";
@@ -91,6 +100,7 @@ void App::on_execute(){
         Cell::vect=Vect2D(0, 0);
         std::cout<<std::endl;
     }
+    // on update is buggy and causes double free or aborted
     on_update();
 }
 
@@ -115,8 +125,8 @@ void App::on_render(){
 
 void App::on_quit(){
     if(surface) SDL_FreeSurface(surface);
-    if(texture) SDL_DestroyTexture(texture);
-    if(renderer) SDL_DestroyRenderer(renderer);
+    // if(texture) SDL_DestroyTexture(texture);
+    // if(renderer) SDL_DestroyRenderer(renderer);
     if(window) SDL_DestroyWindow(window);
     SDL_Quit();
 }
