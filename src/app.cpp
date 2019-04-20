@@ -4,6 +4,10 @@
 #include<iostream>
 #include<cstdlib>
 
+#define IS_QUIT 0
+#define IS_WIN  1
+#define IS_LOSE 2
+
 #define I2P_Y(index)       ((index)/MAX_COLUMN)
 #define I2P_X(index)       ((index)-MAX_COLUMN*I2P_Y(index))
 #define I2Y(index, offset) (CELL_HEIGHT*I2P_Y(index)+offset)
@@ -32,12 +36,12 @@ void App::on_update(){
     }
 }
 
-void App::on_post_render(bool win){
-    if(win && (background=Surface::on_load(WIN, surface))){
+void App::on_post_render(unsigned stat){
+    if(stat==IS_WIN && (background=Surface::on_load(WIN, surface))){
         Surface::on_draw(surface, background);
-    } else if((background=Surface::on_load(LOSE, surface))){
+    } else if(stat==IS_LOSE && (background=Surface::on_load(LOSE, surface))){
         Surface::on_draw(surface, background);
-    } else std::cout<<"Failed to load the image!\n";
+    } else if(stat!=IS_QUIT) std::cout<<"Failed to load the image!\n";
     SDL_FreeSurface(background);
     SDL_UpdateWindowSurface(window);
 }
@@ -50,7 +54,7 @@ App* App::Get_Instance(const std::string& title){
 int App::on_run(){
     if(on_init()) return 1;
 
-    bool stat;
+    unsigned stat=IS_QUIT;
     SDL_Event event;
     while(running){
         while(SDL_PollEvent(&event)) on_event(&event);
@@ -58,8 +62,8 @@ int App::on_run(){
         on_render();
         SDL_Delay(100);
     }   running=true;
-    on_post_render(true);
-    while(running){
+    on_post_render(stat);
+    while(stat && running){
         while(SDL_PollEvent(&event)) on_event(&event);
         SDL_Delay(100);
     }
@@ -84,13 +88,13 @@ void App::on_event(SDL_Event* event){
     Event::on_event(event);
 }
 
-bool App::on_execute(){
-    bool stat;
+unsigned App::on_execute(){
+    unsigned stat=IS_QUIT;
     if(Cell::vect.x_ || Cell::vect.y_){
         running=false;
-        if(found_2048(cells)) stat=true;
+        if(found_2048(cells)) stat=IS_WIN;
         else if(!check_slide(Cell::vect, cells)) running=true;
-        else if(!generate_cell(cells)) stat=false;
+        else if(!generate_cell(cells)) stat=IS_LOSE;
         else running=true;
         Cell::vect=Vect2D(0, 0);
     }

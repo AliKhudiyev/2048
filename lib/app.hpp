@@ -23,7 +23,7 @@ class App: public Event{
     private:
     App(const std::string& title);
     void on_update();
-    void on_post_render(bool win);
+    void on_post_render(unsigned stat);
     
     public:
     ~App(){}
@@ -32,7 +32,7 @@ class App: public Event{
     int on_run();
     int on_init();
     void on_event(SDL_Event* event);
-    bool on_execute();
+    unsigned on_execute();
     void on_render();
     void on_quit();
 
