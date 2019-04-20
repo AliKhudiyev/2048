@@ -2,7 +2,7 @@
 
 ## Introduction
 The game is simple to understand.
-You try to add the same numbers as you slide them in one of the four different directions. If there are at least 2 same numbers in that direction they are added automatically. The goal is to get the number 2048!
+You try to add the same numbers as you slide them in one of the four different directions. If there are at least 2 same numbers in that direction they are added automatically. The goal is to get the number **2048**!
 
 ## How to run
 After downloading the game files into your computer, just open up a terminal from the containing folder and type: **./2048**

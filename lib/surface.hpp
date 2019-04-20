@@ -5,7 +5,10 @@
 
 #define RESOURCE    "resource/"
 #define EXTN        ".bmp"
+
 #define BACKGROUND  RESOURCE"background" EXTN
+#define WIN         RESOURCE"win" EXTN
+#define LOSE        RESOURCE"lose" EXTN
 #define N2          RESOURCE"2" EXTN
 #define N4          RESOURCE"4" EXTN
 #define N8          RESOURCE"8" EXTN

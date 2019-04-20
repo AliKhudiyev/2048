@@ -27,11 +27,19 @@ void App::on_update(){
             name=RESOURCE+std::to_string(cells[i].number)+EXTN;
             cells[i].block=nullptr;
             cells[i].block=Surface::on_load(name.c_str(), surface);
-            if(!cells[i].block){
-                std::cout<<"failed to load bmp "<<name<<"\n";
-            }
+            if(!cells[i].block) std::cout<<"Failed to load the image "<<name<<".\n";
         }
     }
+}
+
+void App::on_post_render(bool win){
+    if(win && (background=Surface::on_load(WIN, surface))){
+        Surface::on_draw(surface, background);
+    } else if((background=Surface::on_load(LOSE, surface))){
+        Surface::on_draw(surface, background);
+    } else std::cout<<"Failed to load the image!\n";
+    SDL_FreeSurface(background);
+    SDL_UpdateWindowSurface(window);
 }
 
 App* App::Get_Instance(const std::string& title){
@@ -42,11 +50,17 @@ App* App::Get_Instance(const std::string& title){
 int App::on_run(){
     if(on_init()) return 1;
 
+    bool stat;
     SDL_Event event;
     while(running){
         while(SDL_PollEvent(&event)) on_event(&event);
-        on_execute();
+        stat=on_execute();
         on_render();
+        SDL_Delay(100);
+    }   running=true;
+    on_post_render(true);
+    while(running){
+        while(SDL_PollEvent(&event)) on_event(&event);
         SDL_Delay(100);
     }
 
@@ -70,16 +84,18 @@ void App::on_event(SDL_Event* event){
     Event::on_event(event);
 }
 
-void App::on_execute(){
+bool App::on_execute(){
+    bool stat;
     if(Cell::vect.x_ || Cell::vect.y_){
         running=false;
-        if(found_2048(cells)) std::cout<<"You won!\n";
+        if(found_2048(cells)) stat=true;
         else if(!check_slide(Cell::vect, cells)) running=true;
-        else if(!generate_cell(cells)) std::cout<<"You lost!\n";
+        else if(!generate_cell(cells)) stat=false;
         else running=true;
         Cell::vect=Vect2D(0, 0);
     }
     on_update();
+    return stat;
 }
 
 void App::on_render(){
