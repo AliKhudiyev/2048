@@ -119,6 +119,7 @@ void App::on_render(){
             }
             SDL_FreeSurface(cells[i].block);
         }
+        cells[i].is_addable=true;
     }
     SDL_UpdateWindowSurface(window);
 }

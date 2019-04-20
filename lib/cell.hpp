@@ -17,6 +17,7 @@ typedef unsigned number_t;
 struct Cell{
     index_t index=0;
     number_t number=0;
+    bool is_addable=true;
     SDL_Surface* block=nullptr;
     static Vect2D vect;
 };

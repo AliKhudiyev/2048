@@ -9,7 +9,7 @@ bool is_empty(const Cell cells[]);
 bool is_full(const Cell cells[]);
 int find_x(const Vect2D& vect, int i, int j);
 int find_y(const Vect2D& vect, int i, int j);
-unsigned set_index(int x, int y, int index, Cell& cell, Cell cells[]);
+bool set_index(int x, int y, int index, Cell& cell, Cell cells[]);
 Vect2D generate_position(const Vect2D& vect, Cell cells[]);
 bool generate_cell(const Vect2D& vect, Cell cells[]);
 bool slide(const Vect2D& vect, Cell cells[]);

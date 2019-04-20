@@ -30,21 +30,23 @@ int find_y(const Vect2D& vect, int i, int j){
     return abs(vect.x_)*((3*vect.x_+3)/2-i*vect.x_)+abs(vect.y_)*((5*vect.y_+3)/2-j*vect.y_);
 }
 
-unsigned set_index(int x, int y, Cell& cell, Cell cells[]){
-    if(is_out(x, y) || !cell.number) return 0;
+bool set_index(int x, int y, Cell& cell, Cell cells[]){
+    if(is_out(x, y) || !cell.number) return false;
     if(cell.number!=cells[MAX_COLUMN*y+x].number &&
-       cells[MAX_COLUMN*y+x].number) return 0;
+       cells[MAX_COLUMN*y+x].number) return false;
     unsigned stat=0;
-    if(cells[MAX_COLUMN*y+x].number==cell.number){
+    if(cells[MAX_COLUMN*y+x].number==cell.number && cells[MAX_COLUMN*y+x].is_addable && cell.is_addable){
         cells[MAX_COLUMN*y+x].number*=2;
-        stat=1;
-    } else{
+        cells[MAX_COLUMN*y+x].is_addable=false;
+        cell.number=0;
+        cell.is_addable=true;
+    } else if(cells[MAX_COLUMN*y+x].number!=cell.number){
         cells[MAX_COLUMN*y+x].number=cell.number;
-        stat=2;
-    }
-    cell.number=0;
+        cell.number=0;
+        cell.is_addable=true;
+    } else return false;
 
-    return stat;
+    return true;
 }
 
 Vect2D generate_position(const Vect2D& vect, Cell cells[]){
@@ -73,7 +75,7 @@ bool generate_cell(const Vect2D& vect, Cell cells[]){
     
     if(v.k_==0) return false;
 
-    std::cout<<"new position: "<<v.x_<<' '<<v.y_<<'\n';
+    // std::cout<<"new position: "<<v.x_<<' '<<v.y_<<'\n';
     cells[MAX_COLUMN*v.y_+v.x_].index=MAX_COLUMN*v.y_+v.x_;
     cells[MAX_COLUMN*v.y_+v.x_].number=2;
 
@@ -81,43 +83,24 @@ bool generate_cell(const Vect2D& vect, Cell cells[]){
 }
 
 bool slide(const Vect2D& vect, Cell cells[]){
-    bool result=false, slidable=true, is_addable=false;
-    bool pass[4]{false, false, false, false};
+    bool slidable=true;
     int x, y, x_dest, y_dest, n_set;
-    unsigned stat;
     while(slidable){
         slidable=false;
-        // pass=false;
-        std::cout<<"\tsliding..\n";
+        // std::cout<<"\tsliding..\n";
         for(int i=0;i<MAX_ROW;++i){
             for(int j=0;j<MAX_COLUMN;++j){
                 x_dest=find_x(vect, i, j);
                 y_dest=find_y(vect, i, j);
                 x=find_x(vect, i, j)-vect.x_;
                 y=find_y(vect, i, j)-vect.y_;
-                // very buggy
-                if(!is_out(x_dest, y_dest) && !is_addable && 
-                    !cells[MAX_COLUMN*y_dest+x_dest].number){
+                if(set_index(x_dest, y_dest, cells[4*y+x], cells)){
                     slidable=true;
-                    continue;
-                } else if(is_addable && !is_out(x_dest, y_dest) && pass[i] &&
-                    cells[MAX_COLUMN*y_dest+x_dest].number==cells[MAX_COLUMN*y+x].number){
-                    continue;
-                }
-                if((stat=set_index(x_dest, y_dest, cells[MAX_COLUMN*y+x], cells))){
-                    std::cout<<"STAT: "<<stat<<'\n';
-                    std::cout<<"Dest: "<<x_dest<<' '<<y_dest<<" | "<<cells[MAX_COLUMN*y_dest+x_dest].number<<'\n';
-                    std::cout<<"Src: "<<x<<' '<<y<<" | "<<cells[MAX_COLUMN*y+x].number<<'\n';
-                    slidable=true;
-                    if(stat==1 && !pass[i]) pass[i]=true;
-                    // if(stat==2 && pass[i]) pass[i]=false;
-                    std::cout<<"pass "<<i<<": "<<pass[i]<<'\n';
+                    // std::cout<<"Dest: "<<x_dest<<' '<<y_dest<<'\n';
+                    // std::cout<<"Src: "<<x<<' '<<y<<'\n';
                 }
             }
-            // pass=true;
         }
-        std::cout<<"It is now addable!\n";
-        is_addable=true;
     }
     return true;
 }
