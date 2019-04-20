@@ -17,6 +17,7 @@ App::App(const std::string& title){
     name=title;
     window=nullptr;
     surface=nullptr;
+    generate_cell(cells);
 }
 
 void App::on_update(){
@@ -41,8 +42,6 @@ App* App::Get_Instance(const std::string& title){
 int App::on_run(){
     if(on_init()) return 1;
 
-    std::cout<<"Init passed.\n";
-
     SDL_Event event;
     while(running){
         while(SDL_PollEvent(&event)) on_event(&event);
@@ -51,11 +50,7 @@ int App::on_run(){
         SDL_Delay(100);
     }
 
-    std::cout<<"App working passed\n";
-
     on_quit();
-
-    std::cout<<"Quit passed.\n";
 
     return 0;
 }
@@ -77,18 +72,11 @@ void App::on_event(SDL_Event* event){
 
 void App::on_execute(){
     if(Cell::vect.x_ || Cell::vect.y_){
-        if(found_2048(cells)){
-            std::cout<<"You won!\n";
-            running=false;
-        }
-        else if(!slide(Cell::vect, cells)){
-            std::cout<<"SLIDE: You lost!\n";
-            running=false;
-        }
-        else if(!generate_cell(Cell::vect, cells)){
-            std::cout<<"GEN: You lost!\n";
-            running=false;
-        }
+        running=false;
+        if(found_2048(cells)) std::cout<<"You won!\n";
+        else if(!check_slide(Cell::vect, cells)) running=true;
+        else if(!generate_cell(cells)) std::cout<<"You lost!\n";
+        else running=true;
         Cell::vect=Vect2D(0, 0);
     }
     on_update();
