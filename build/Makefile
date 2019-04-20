@@ -123,6 +123,33 @@ depend:
 	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/build
 .PHONY : 2048/fast
 
+src/2048.o: src/2048.cpp.o
+
+.PHONY : src/2048.o
+
+# target to build an object file
+src/2048.cpp.o:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/2048.cpp.o
+.PHONY : src/2048.cpp.o
+
+src/2048.i: src/2048.cpp.i
+
+.PHONY : src/2048.i
+
+# target to preprocess a source file
+src/2048.cpp.i:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/2048.cpp.i
+.PHONY : src/2048.cpp.i
+
+src/2048.s: src/2048.cpp.s
+
+.PHONY : src/2048.s
+
+# target to generate assembly for a file
+src/2048.cpp.s:
+	$(MAKE) -f CMakeFiles/2048.dir/build.make CMakeFiles/2048.dir/src/2048.cpp.s
+.PHONY : src/2048.cpp.s
+
 src/app.o: src/app.cpp.o
 
 .PHONY : src/app.o
@@ -267,6 +294,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... 2048"
 	@echo "... edit_cache"
+	@echo "... src/2048.o"
+	@echo "... src/2048.i"
+	@echo "... src/2048.s"
 	@echo "... src/app.o"
 	@echo "... src/app.i"
 	@echo "... src/app.s"

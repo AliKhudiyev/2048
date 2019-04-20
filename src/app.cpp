@@ -1,6 +1,6 @@
 #include"app.hpp"
 #include"surface.hpp"
-#include"g2048.hpp"
+#include"2048.hpp"
 #include<iostream>
 #include<cstdlib>
 
@@ -34,10 +34,7 @@ void App::on_update(){
 }
 
 App* App::Get_Instance(const std::string& title){
-    if(!app){
-        std::cout<<"allocating app\n";
-        app=new App(title);
-    }
+    if(!app) app=new App(title);
     return app;
 }
 
@@ -45,10 +42,6 @@ int App::on_run(){
     if(on_init()) return 1;
 
     std::cout<<"Init passed.\n";
-
-    // cells[0].number=8;
-    // cells[1].number=4;
-    // cells[2].number=4;
 
     SDL_Event event;
     while(running){
@@ -84,7 +77,6 @@ void App::on_event(SDL_Event* event){
 
 void App::on_execute(){
     if(Cell::vect.x_ || Cell::vect.y_){
-        std::cout<<"VECT : "<<Cell::vect.x_<<' '<<Cell::vect.y_<<'\n';
         if(found_2048(cells)){
             std::cout<<"You won!\n";
             running=false;
@@ -98,9 +90,7 @@ void App::on_execute(){
             running=false;
         }
         Cell::vect=Vect2D(0, 0);
-        std::cout<<std::endl;
     }
-    // on update is buggy and causes double free or aborted
     on_update();
 }
 
@@ -133,22 +123,18 @@ void App::on_quit(){
 }
 
 void App::on_right_key_pressed(){
-    std::cout<<"right key pressed\n";
     Cell::vect=Vect2D(1, 0, -1);
 }
 
 void App::on_left_key_pressed(){
-    std::cout<<"left key pressed\n";
     Cell::vect=Vect2D(-1, 0);
 }
 
 void App::on_up_key_pressed(){
-    std::cout<<"up key pressed\n";
     Cell::vect=Vect2D(0, -1);
 }
 
 void App::on_down_key_pressed(){
-    std::cout<<"down key pressed\n";
     Cell::vect=Vect2D(0, 1, -1);
 }
 

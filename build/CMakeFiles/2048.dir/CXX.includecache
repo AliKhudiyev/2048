@@ -6,8 +6,16 @@
 
 #IncludeRegexTransform: 
 
+../lib/2048.hpp
+cell.hpp
+../lib/cell.hpp
+vect2d.hpp
+../lib/vect2d.hpp
+
 ../lib/app.hpp
 string
+-
+new
 -
 event.hpp
 ../lib/event.hpp
@@ -21,6 +29,8 @@ texture.hpp
 ../lib/cell.hpp
 SDL2/SDL.h
 -
+vect2d.hpp
+../lib/vect2d.hpp
 
 ../lib/event.hpp
 SDL2/SDL_events.h
@@ -34,11 +44,23 @@ SDL2/SDL.h
 SDL2/SDL.h
 -
 
+../lib/vect2d.hpp
+
+/home/ali/Desktop/2048/src/2048.cpp
+2048.hpp
+/home/ali/Desktop/2048/src/2048.hpp
+cstdlib
+-
+iostream
+-
+
 /home/ali/Desktop/2048/src/app.cpp
 app.hpp
 /home/ali/Desktop/2048/src/app.hpp
 surface.hpp
 /home/ali/Desktop/2048/src/surface.hpp
+2048.hpp
+/home/ali/Desktop/2048/src/2048.hpp
 iostream
 -
 cstdlib

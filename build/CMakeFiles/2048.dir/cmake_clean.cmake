@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/2048.dir/src/event.cpp.o"
   "CMakeFiles/2048.dir/src/surface.cpp.o"
   "CMakeFiles/2048.dir/src/texture.cpp.o"
+  "CMakeFiles/2048.dir/src/2048.cpp.o"
   "2048.pdb"
   "2048"
 )

@@ -1,1 +1,1 @@
-/usr/bin/c++   -Wextra   CMakeFiles/2048.dir/src/main.cpp.o CMakeFiles/2048.dir/src/app.cpp.o CMakeFiles/2048.dir/src/event.cpp.o CMakeFiles/2048.dir/src/surface.cpp.o CMakeFiles/2048.dir/src/texture.cpp.o  -o 2048 -lSDL2 
+/usr/bin/c++   -Wextra   CMakeFiles/2048.dir/src/main.cpp.o CMakeFiles/2048.dir/src/app.cpp.o CMakeFiles/2048.dir/src/event.cpp.o CMakeFiles/2048.dir/src/surface.cpp.o CMakeFiles/2048.dir/src/texture.cpp.o CMakeFiles/2048.dir/src/2048.cpp.o  -o 2048 -lSDL2 

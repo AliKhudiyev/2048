@@ -13,5 +13,6 @@ add_executable(
     src/app.cpp 
     src/event.cpp 
     src/surface.cpp 
-    src/texture.cpp)
+    src/texture.cpp
+    src/2048.cpp)
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})

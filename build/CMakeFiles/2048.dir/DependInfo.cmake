@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/ali/Desktop/2048/src/2048.cpp" "/home/ali/Desktop/2048/build/CMakeFiles/2048.dir/src/2048.cpp.o"
   "/home/ali/Desktop/2048/src/app.cpp" "/home/ali/Desktop/2048/build/CMakeFiles/2048.dir/src/app.cpp.o"
   "/home/ali/Desktop/2048/src/event.cpp" "/home/ali/Desktop/2048/build/CMakeFiles/2048.dir/src/event.cpp.o"
   "/home/ali/Desktop/2048/src/main.cpp" "/home/ali/Desktop/2048/build/CMakeFiles/2048.dir/src/main.cpp.o"

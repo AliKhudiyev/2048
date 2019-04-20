@@ -1,6 +1,14 @@
-#include"g2048.hpp"
+#include"2048.hpp"
 #include<cstdlib>
 #include<iostream>
+
+int find_x(const Vect2D& vect, int i, int j){
+    return abs(vect.x_)*((5*vect.x_+3)/2-j*vect.x_)+abs(vect.y_)*((3*vect.y_+3)/2-i*vect.y_);
+}
+
+int find_y(const Vect2D& vect, int i, int j){
+    return abs(vect.x_)*((3*vect.x_+3)/2-i*vect.x_)+abs(vect.y_)*((5*vect.y_+3)/2-j*vect.y_);
+}
 
 bool is_out(int x, int y){
     if(x<0 || x>=MAX_COLUMN ||
@@ -21,14 +29,7 @@ bool is_full(const Cell cells[]){
     }
     return true;
 }
-// |x|*(X(x)-j*x)+|y|*i, |x|*i+|y|*(Y(y)-j*y)
-int find_x(const Vect2D& vect, int i, int j){
-    return abs(vect.x_)*((5*vect.x_+3)/2-j*vect.x_)+abs(vect.y_)*((3*vect.y_+3)/2-i*vect.y_);
-}
-// |x|*(X(x)-j*x)+|y|*i, |x|*i+|y|*(Y(y)-j*y)
-int find_y(const Vect2D& vect, int i, int j){
-    return abs(vect.x_)*((3*vect.x_+3)/2-i*vect.x_)+abs(vect.y_)*((5*vect.y_+3)/2-j*vect.y_);
-}
+
 
 bool set_index(int x, int y, Cell& cell, Cell cells[]){
     if(is_out(x, y) || !cell.number) return false;
@@ -73,9 +74,8 @@ Vect2D generate_position(const Vect2D& vect, Cell cells[]){
 bool generate_cell(const Vect2D& vect, Cell cells[]){
     Vect2D v=generate_position(vect, cells);
     
-    if(v.k_==0) return false;
+    if(!v.k_) return false;
 
-    // std::cout<<"new position: "<<v.x_<<' '<<v.y_<<'\n';
     cells[MAX_COLUMN*v.y_+v.x_].index=MAX_COLUMN*v.y_+v.x_;
     cells[MAX_COLUMN*v.y_+v.x_].number=2;
 
@@ -87,29 +87,16 @@ bool slide(const Vect2D& vect, Cell cells[]){
     int x, y, x_dest, y_dest, n_set;
     while(slidable){
         slidable=false;
-        // std::cout<<"\tsliding..\n";
         for(int i=0;i<MAX_ROW;++i){
             for(int j=0;j<MAX_COLUMN;++j){
                 x_dest=find_x(vect, i, j);
                 y_dest=find_y(vect, i, j);
                 x=find_x(vect, i, j)-vect.x_;
                 y=find_y(vect, i, j)-vect.y_;
-                if(set_index(x_dest, y_dest, cells[4*y+x], cells)){
-                    slidable=true;
-                    // std::cout<<"Dest: "<<x_dest<<' '<<y_dest<<'\n';
-                    // std::cout<<"Src: "<<x<<' '<<y<<'\n';
-                }
+                if(set_index(x_dest, y_dest, cells[4*y+x], cells)) slidable=true;
             }
         }
     }
-    return true;
-}
-
-bool delete_number(unsigned x, unsigned y, Cell cells[]){
-    if(is_out(x, y) || !cells[MAX_COLUMN*y+x].number) return false;
-    cells[MAX_COLUMN*y+x].number=0;
-    delete cells[MAX_COLUMN*y+x].block;
-    cells[MAX_COLUMN*y+x].block=nullptr;
     return true;
 }
 
